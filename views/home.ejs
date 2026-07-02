@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    body {
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Page</title>
+</head>
+<body>
+  <h1>URL Shortener</h1>
+
+  <% if (locals.id) { %>
+    <p>URL Generated: http://localhost:8001/url/<%= id %></p>
+  <% } %>
+
+  <div>
+    <form method="POST" action="/url">
+      <label>Enter Your Original URL</label>
+      <input type="text" name="url" placeholder="https://example.com" />
+      <button type="submit">Generate</button>
+    </form>
+  </div>
+
+  <br>
+
+  <div>
+    <% if (locals.urls) { %>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>S. No</th>
+            <th>Original URL</th>
+            <th>Short ID</th>
+            <th>Short URL</th>
+            <th>Clicks</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% urls.forEach((url, index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= url.redirectURL %></td>
+              <td><%= url.shortId %></td>
+              <td>
+                <a href="/url/<%= url.shortId %>" target="_blank">
+                  http://localhost:8001/url/<%= url.shortId %>
+                </a>
+              </td>
+              <td><%= url.visitHistory.length %></td>
+              <td>
+                <form action="/url/delete/<%= url._id %>" method="POST">
+                  <button type="submit">🗑️</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </div>
+</body>
+</html>
+
+

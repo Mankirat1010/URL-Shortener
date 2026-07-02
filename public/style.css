@@ -1,0 +1,271 @@
+/* ============================================================
+   URL Shortener — "Claim Ticket" theme
+   Every shortened link is treated like a claim stub: your long
+   URL checked in, a short code handed back, torn-edge included.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ink: #0f2a2c;
+  --hull: #123437;
+  --hull-deep: #0a1f21;
+  --paper: #eef3ee;
+  --paper-dim: #dbe4dd;
+  --brass: #c9a227;
+  --brass-deep: #a3821a;
+  --rust: #c1443c;
+  --rust-deep: #a3352e;
+  --font-display: 'Space Grotesk', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* Body */
+body {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(201, 162, 39, 0.08), transparent 45%),
+    linear-gradient(160deg, var(--hull) 0%, var(--hull-deep) 100%);
+  font-family: var(--font-display);
+  min-height: 100vh;
+  padding: 56px 24px;
+  color: var(--paper);
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--paper);
+  position: relative;
+}
+
+h1::after {
+  content: "BOARDING • CHECKED-IN • SHORTENED";
+  display: block;
+  margin: 14px auto 0;
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--brass);
+  border: 1px solid var(--brass);
+  padding: 5px 14px;
+  border-radius: 999px;
+  transform: rotate(-2deg);
+  opacity: 0.85;
+}
+
+/* Generated URL text */
+p {
+  text-align: center;
+  font-size: 18px;
+  font-family: var(--font-mono);
+  margin: 28px 0 30px;
+  font-weight: 400;
+  color: var(--paper);
+}
+
+p::before {
+  content: "🔗 ";
+}
+
+/* Form */
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;   /* Forces rows to stack vertically */
+  align-items: center;       /* Centers the form content on the page */
+  gap: 20px;                 /* Adds spacing between rows */
+  margin: 30px auto;
+  max-width: 500px;          /* Prevents the form from becoming ultra-wide */
+  width: 100%;
+}
+
+/* Form Rows (Label + Input pair) */
+/* Form Rows (Label + Input pair) */
+.form-group {
+  display: flex;
+  flex-direction: column;   
+  align-items: flex-start;  /* Forces inputs and labels to align to the left edge */
+  text-align: left;         /* Forces the text content inside the label to left-align */
+  width: 100%;
+  max-width: 350px;         
+  gap: 6px;                 
+}
+
+/* Form Actions (Submit button row) */
+/* Form Actions (Submit button row) */
+.form-actions {
+  width: 100%;
+  max-width: 350px;          /* Matches your exact input field width */
+  display: flex;
+  justify-content: flex-end; /* This instantly pushes the button to the right side */
+  margin-top: 10px;
+}
+
+/* Labels */
+label {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--paper);
+}
+
+/* Inputs */
+input {
+  width: 350px;
+  padding: 14px 18px;
+  border: 1.5px solid var(--paper-dim);
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: var(--font-mono);
+  outline: none;
+  background: var(--paper);
+  color: var(--ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder {
+  color: #7c8a80;
+}
+
+input:focus {
+  border-color: var(--brass);
+  box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.2);
+}
+
+/* Buttons */
+button {
+  background: var(--brass);
+  color: var(--ink);
+  border: none;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: 0.3px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: var(--brass-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(201, 162, 39, 0.35);
+}
+
+/* Table */
+table {
+  width: 100%;
+  max-width: 1700px;
+  margin: 34px auto 0;
+  border-collapse: collapse;
+  background: var(--paper);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+  overflow: hidden;
+  color: var(--ink);
+}
+
+/* Table header */
+thead {
+  background: linear-gradient(120deg, var(--ink), #1c4448);
+  color: var(--paper);
+  position: relative;
+}
+
+th {
+  padding: 20px 14px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+thead::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 14px;
+  background-image: radial-gradient(circle 6px, var(--paper) 6px, transparent 6.5px);
+  background-size: 22px 14px;
+  background-position: 6px 0;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+/* Table rows */
+td {
+  padding: 16px 14px;
+  font-size: 16px;
+  font-family: var(--font-mono);
+  text-align: center;
+  border-bottom: 1px dashed var(--paper-dim);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* FIX 1: only body rows hover, header stays unchanged */
+tbody tr {
+  transition: background 0.15s ease;
+}
+
+tbody tr:hover {
+  background: #f6f9f6;
+}
+
+/* Links */
+a {
+  color: var(--brass-deep);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+a:hover {
+  border-color: var(--brass-deep);
+}
+
+/* FIX 2: Trash icon style button */
+td form {
+  display: inline-block;
+}
+
+td form button {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  font-size: 28px;
+  transition: transform 0.2s ease;
+  color: var(--rust);
+}
+
+td form button:hover {
+  transform: scale(1.12);
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  h1 { font-size: 32px; }
+  input { width: 100%; max-width: 320px; }
+  th, td { padding: 12px 8px; font-size: 14px; }
+}
