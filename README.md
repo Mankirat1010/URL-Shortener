@@ -21,6 +21,28 @@ A full-stack URL Shortener web application built using **Node.js, Express.js, Mo
 
 ---
 
+## 📸 Project Preview
+
+### Home Page
+![Home Page](./screenshots/home_page_clean.png)
+
+### URL List / Analytics Dashboard
+![Dashboard](./screenshots/full_list.png)
+
+### Signup Page
+![Signup](./screenshots/sign_up.png)
+
+### Login Page
+![Login](./screenshots/login.png)
+
+### Logs Folder
+![Logs Folder](./screenshots/logs_folder_generated.png)
+
+### Custom Access Logs
+![Access Logs](./screenshots/inside_logs_folder.png)
+
+---
+
 ## 🛠️ Tech Stack
 
 ### Frontend
