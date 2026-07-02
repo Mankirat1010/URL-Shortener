@@ -35,10 +35,10 @@ A full-stack URL Shortener web application built using **Node.js, Express.js, Mo
 ### Login Page
 ![Login](./screenshots/login.png)
 
-### Logs Folder
+### Logs Folder - this folder will get created automatically when you'll run index.js
 ![Logs Folder](./screenshots/logs_folder_generated.png)
 
-### Custom Access Logs
+### Custom Access Logs - logs/access.log creates record for all the logs
 ![Access Logs](./screenshots/inside_logs_folder.png)
 
 ---
