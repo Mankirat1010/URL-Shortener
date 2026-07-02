@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
@@ -17,11 +19,17 @@ const {
 const URL = require("./models/url");
 
 const app = express();
-const PORT = 8001;
+const PORT = process.env.PORT || 8001;
+
+// Create logs folder if not exists
+const logsDir = path.join(__dirname, "logs");
+if (!fs.existsSync(logsDir)) {
+  fs.mkdirSync(logsDir);
+}
 
 // Create log stream
 const accessLogStream = fs.createWriteStream(
-  path.join(__dirname, "logs", "access.log"),
+  path.join(logsDir, "access.log"),
   { flags: "a" }
 );
 
@@ -56,7 +64,7 @@ Status   : ${status}
 
 app.use(morgan("custom", { stream: accessLogStream }));
 
-connectToMongoDB("mongodb://localhost:27017/short-url").then(() =>
+connectToMongoDB(process.env.MONGO_URL).then(() =>
   console.log("Mongo is started")
 );
 
